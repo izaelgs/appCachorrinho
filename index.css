@@ -1,0 +1,63 @@
+body {
+    font-family: roboto, sans-serif;
+}
+
+.row {
+    margin: 0;
+}
+
+.container {
+    padding: 15px;
+}
+
+p,
+li {
+    color: green;
+}
+
+
+/*are de navegação tlg que fica os butao e os link e o logo do cachorrin*/
+
+header,
+.navbar {
+    background-color: rgba(128, 128, 128, 0.384);
+}
+
+.navbar-brand {
+    padding: 0;
+    color: white;
+}
+
+#contene {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#cab a {
+    color: #D4AF91;
+    text-shadow: 1px 1px #965A50;
+    margin-left: 10px;
+    transition-duration: 0.4s;
+}
+
+#cab a:hover {
+    color: #965A50;
+    margin-left: 30px;
+    text-shadow: none;
+}
+
+#butao {
+    width: 100%;
+    border-color: #965A50;
+    color: #965A50;
+}
+
+#butao:hover {
+    color: white;
+    background-color: #965A50;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
