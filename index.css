@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    padding: 15px;
+    padding: 25px;
 }
 
 p,
@@ -36,13 +36,15 @@ header,
 #cab a {
     color: #D4AF91;
     text-shadow: 1px 1px #965A50;
-    margin-left: 10px;
-    transition-duration: 0.4s;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    transition-duration: 0.3s;
 }
 
 #cab a:hover {
     color: #965A50;
-    margin-left: 30px;
+    margin-right: 30px;
     text-shadow: none;
 }
 
@@ -55,9 +57,4 @@ header,
 #butao:hover {
     color: white;
     background-color: #965A50;
-}
-
-a {
-    text-decoration: none;
-    font-weight: bold;
 }
