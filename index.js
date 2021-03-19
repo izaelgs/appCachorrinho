@@ -8,16 +8,24 @@ var app = new Vue({
         },
         animais: []
     },
+    mounted: function() {
+        this.animais = JSON.parse(localStorage.getItem("vetorAnimais"));
+        console.log(this.animais);
+    },
     methods: {
 
-        cadastro: function() {
-            this.animais.push(this.animal);
+        resetAnimal: function() {
             this.animal = {
                 especie: '',
                 nome: '',
                 tutor: '',
             };
-            console.log(animal)
+        },
+        cadastro: function() {
+            this.animais.push(this.animal);
+            localStorage.setItem("vetorAnimais", JSON.stringify(this.animais));
+            this.resetAnimal
+
         },
     }
 });
