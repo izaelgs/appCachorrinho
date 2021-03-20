@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1n, shrink-to-fit=no">
+    <!--bootstrap-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--vue-->
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- diquisii -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.3/dexie.min.js' integrity='sha512-aEtNzq8X5E0ambgeM68H174SOXaANJ6wDqJ0TuVIx4R2J4fRdUA0nLzx0faA1mmViqb+r0VX7cOXkskxyJENUA==' crossorigin='anonymous'></script>
+    <!-- base de dados -->
+    <script src="dataBase.js"></script>
+    <title>Pessoas</title>
+</head>
+
+<body>
+    <header>
+        <!-- cabeçalho -->
+        <div class="container" id="contene">
+            <nav class="navbar navbar-expand-sm fixed-top">
+                <div class="container">
+                    <a href="#" class="navbar-brand">
+                        <img src="img/dog.png" alt="cachorro foda" width=112px>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cab" aria-controls="cab" aria-expanded="false" aria-label="toggle navigation">
+                <span class="navbar-toggler-icon"><img src="img/list.png" alt="menu" style="width: 30px;"></span>
+                </button>
+
+                    <div class="collapse navbar-collapse" id="cab">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="animais.html" class="nav-link">ANIMAIS</a></li>
+                            <li class="nav-item"><a href="pessoas.html" class="nav-link">PESSOAS</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">ESSAS COISA</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <img src="img/pessoa.png" alt="pessoa" style="width: 100%;">
+
+    <div class="container" id="app">
+
+        <hr>
+        <br><br>
+        <h1 class="display-2 text-center">Pessoas</h1>
+        <h2 class="display-5"> Cadastro</h2>
+        <fieldset>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome</span>
+                </div>
+                <input type="text" placeholder="Primeiro Nome" aria-label="First name" class="form-control" v-model="pessoa.nome">
+                <input type="text" placeholder="Segundo Nome" aria-label="Last name" class="form-control" v-model=pessoa.segundoNome>
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Telefone</span>
+                </div>
+                <input type="number" class="form-control" placeholder="telefone de contato" aria-label="telefone" aria-describedby="basic-addon1" v-model="pessoa.telefone">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Sexo</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" v-model="pessoa.sexo">
+                  <option selected>Choose...</option>
+                  <option value="1">Feminino</option>
+                  <option value="2">Masculino</option>
+                  <option value="3">Sim</option>
+                </select> &nbsp;
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Numeros Frente e verso do Cartão</span>
+                </div>
+                <input type="text" aria-label="Last name" class="form-control" v-model="pessoa.cartao">
+            </div>
+            <br>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="Digite aqui o CPF" aria-label="CPF da pessoa a ser cadastrada" aria-describedby="basic-addon2" v-model="pessoa.cpf">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2">CPF</span>
+                </div>
+            </div>
+            <button type="button " class="btn btn-outline-secondary " id="butao " v-on:click="addPessoas">Cadastrar</button>
+        </fieldset>
+        <br>
+        <hr>
+        <br>
+        <h2 class="display-5">Dados</h2>
+
+        <table class="table ">
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col ">Primeiro Nome</th>
+                    <th scope="col ">Segundo Nome</th>
+                    <th scope="col ">cpf</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="p in pessoas ">
+                    <td>{{p.nome}}</td>
+                    <td>{{p.segundoNome}}</td>
+                    <td>{{p.cpf}}</td>
+                    <td><button class="btn btn-danger" style="width: 100px;" v-on:click="banirPessoa(p)">Banir do Universo</button></td>
+                    <td><button class="btn btn-danger" style="width: 70px;" v-on:click="selectPessoa(p)">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--bootstrap-->
+    <script src="assets/js/bootstrap.bundle.min.js "></script>
+    <!--vue-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="pessoas.js"></script>
+</body>
+
+</html>

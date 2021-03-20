@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1n, shrink-to-fit=no">
+    <!--bootstrap-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--vue-->
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Animais</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="container" id="contene">
+            <nav class="navbar navbar-expand-sm fixed-top">
+                <div class="container">
+                    <a href="#" class="navbar-brand">
+                        <img src="img/dog.png" alt="cachorro foda" width=112px>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cab" aria-controls="cab" aria-expanded="false" aria-label="toggle navigation">
+                <span class="navbar-toggler-icon"><img src="img/list.png" alt="menu" style="width: 30px;"></span>
+                </button>
+
+                    <div class="collapse navbar-collapse" id="cab">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="animais.html" class="nav-link">ANIMAIS</a></li>
+                            <li class="nav-item"><a href="pessoas.html" class="nav-link">PESSOAS</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">ESSAS COISA</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <img src="img/dog2.png" alt="cachorro" style="width: 100%;">
+
+    <div id="app" class="container">
+        <hr>
+        <br><br>
+        <h1 class="display-2">Animaizinhos</h1>
+        <fieldset>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Tipo de Animal</label>
+                </div>
+                <select name="especie" class="custom-select" id="inputGroupSelect01" v-model="animal.especie">
+                    <option value="dragão">Dragão</option>
+                    <option value="cachorro">Cachorrinho</option> 
+                    <option value="boi">Boi</option> 
+                    <option value="gato">Gato</option>                     
+                    <option value="add">Outro</option>
+            </select>
+            </div>
+            <!--<div class="input-group mb-3 ">
+                <div class="input-group-prepend ">
+                    <span class="input-group-text " id="basic-addon1 ">Nova Espécie</span>
+                </div>
+                <input type="text " class="form-control " placeholder="Digite aqui o nome da nova espécie " aria-label="Username " aria-describedby="basic-addon1 " v-model="ipt ">
+                <button type="button " class="btn btn-outline-success ">Salvar</button>
+            </div>-->
+
+            <div class="input-group mb-3 ">
+                <div class="iput-group-prepend ">
+                    <span class="input-group-text ">Tutor</span>
+                </div>
+                <input type="text " class="form-control " placeholder="Digite aqui o nome do Tutor " v-model="animal.tutor ">
+            </div>
+            <div class="input-group mb-3 ">
+                <div class="iput-group-prepend ">
+                    <span class="input-group-text ">Nome do Animal</span>
+                </div>
+                <input type="text " class="form-control " placeholder="Digite aqui o nome do Animal " v-model="animal.nome ">
+            </div>
+            <button type="button " class="btn btn-outline-secondary " id="butao" v-on:click="cadastro" style="width: 100%;">Cadastrar</button>
+        </fieldset>
+        <br>
+        <hr>
+        <br>
+        <h1>Pets</h1>
+
+        <table class="table ">
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col ">Nome do Animal</th>
+                    <th scope="col ">Tutor</th>
+                    <th scope="col ">Espécie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="p in animais ">
+
+                    <td>{{p.nome}}</td>
+
+                    <td>{{p.tutor}}</td>
+
+                    <td>{{p.especie}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--bootstrap-->
+    <script src="assets/js/bootstrap.bundle.min.js "></script>
+    <!--vue-->
+    <script src="animais.js "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+
+</html>
