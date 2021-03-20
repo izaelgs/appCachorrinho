@@ -107,9 +107,8 @@
                 <tr v-for="p in pessoas ">
                     <td>{{p.nome}}</td>
                     <td>{{p.segundoNome}}</td>
-                    <td>{{p.cpf}}</td>
-                    <td><button class="btn btn-danger" style="width: 100px;" v-on:click="banirPessoa(p)">Banir do Universo</button></td>
-                    <td><button class="btn btn-danger" style="width: 70px;" v-on:click="selectPessoa(p)">Editar</button></td>
+                    <td><button class="btn btn-danger" style="width: 60px;" v-on:click="banirPessoa(p)">delet</button></td>
+                    <td><button class="btn btn-danger" style="width: 60px;" v-on:click="selectPessoa(p)">edit</button></td>
                 </tr>
             </tbody>
         </table>

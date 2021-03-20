@@ -16,7 +16,6 @@ var vapp = new Vue({
     },
     mounted: function() {
         this.listarAnimais();
-        alert('deu certo');
     },
     methods: {
         resetAnimal: function() {
@@ -30,16 +29,22 @@ var vapp = new Vue({
                 vacina: '',
                 pulga: '',
                 porte: ''
-            }
-
+            };
         },
-        addanimal: function() {
+        addAnimal: function() {
             var _this = this;
             dataBase.tbAnimais.add(_this.animal).then(function(retorno) {
                 alert('animal Cadastrada');
                 _this.listarAnimais();
             });
             this.resetAnimais
+        },
+        delAnimal: function(animal) {
+            var _this = this;
+            dataBase.tbAnimais.delete(animal.id).then(function(retorno) {
+                alert('esse ficou fudido');
+                _this.listarAnimais();
+            });
         },
         listarAnimais: function() {
             var _this = this;
