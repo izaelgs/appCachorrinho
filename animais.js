@@ -1,32 +1,51 @@
-var animal = new Vue({
+var vapp = new Vue({
     el: '#app',
     data: {
         animal: {
-            especie: '',
+            tipo: '',
             nome: '',
-            tutor: ''
+            tutor: '',
+            sexo: '',
+            esterelizado: '',
+            alergia: '',
+            vacina: '',
+            pulga: '',
+            porte: ''
         },
         animais: [],
-
     },
     mounted: function() {
-        this.animais = JSON.parse(localStorage.getItem("vetorAnimais"));
-        console.log(this.animais);
+        this.listarAnimais();
+        alert('deu certo');
     },
     methods: {
-
         resetAnimal: function() {
             this.animal = {
-                especie: '',
+                tipo: '',
                 nome: '',
                 tutor: '',
-            };
-        },
-        cadastro: function() {
-            this.animais.push(this.animal);
-            localStorage.setItem("vetorAnimais", JSON.stringify(this.animais));
-            this.resetAnimal
+                sexo: '',
+                esterelizado: '',
+                alergia: '',
+                vacina: '',
+                pulga: '',
+                porte: ''
+            }
 
         },
+        addanimal: function() {
+            var _this = this;
+            dataBase.tbAnimais.add(_this.animal).then(function(retorno) {
+                alert('animal Cadastrada');
+                _this.listarAnimais();
+            });
+            this.resetAnimais
+        },
+        listarAnimais: function() {
+            var _this = this;
+            dataBase.tbAnimais.toArray().then(function(retorno) {
+                _this.animais = retorno;
+            })
+        }
     }
 });

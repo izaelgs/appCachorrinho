@@ -2,14 +2,21 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1n, shrink-to-fit=no">
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
     <!--bootstrap-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!--vue-->
-    <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+    <!-- diquisii -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.3/dexie.min.js' integrity='sha512-aEtNzq8X5E0ambgeM68H174SOXaANJ6wDqJ0TuVIx4R2J4fRdUA0nLzx0faA1mmViqb+r0VX7cOXkskxyJENUA==' crossorigin='anonymous'></script>
+    <!-- base de dados -->
+    <script src="dataBase.js"></script>
     <title>Animais</title>
 </head>
 
@@ -25,52 +32,38 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cab" aria-controls="cab" aria-expanded="false" aria-label="toggle navigation">
                 <span class="navbar-toggler-icon"><img src="img/list.png" alt="menu" style="width: 30px;"></span>
                 </button>
-
                     <div class="collapse navbar-collapse" id="cab">
                         <ul class="navbar-nav">
                             <li class="nav-item"><a href="animais.html" class="nav-link">ANIMAIS</a></li>
                             <li class="nav-item"><a href="pessoas.html" class="nav-link">PESSOAS</a></li>
                             <li class="nav-item"><a href="" class="nav-link">ESSAS COISA</a></li>
                         </ul>
-
                     </div>
                 </div>
-
             </nav>
         </div>
     </header>
     <img src="img/dog2.png" alt="cachorro" style="width: 100%;">
 
-    <div id="app" class="container">
+    <div id='app' class="container">
         <hr>
         <br><br>
-        <h1 class="display-2">Animaizinhos</h1>
+        <h1 class="display-2 text-center">Animaizinhos</h1>
+        <hr>
+        <br>
         <fieldset>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Tipo de Animal</label>
+            <legend>Cadastro</legend>
+            <div class="input-group mb-3 ">
+                <div class="iput-group-prepend ">
+                    <span class="input-group-text ">Tipo de animal</span>
                 </div>
-                <select name="especie" class="custom-select" id="inputGroupSelect01" v-model="animal.especie">
-                    <option value="dragão">Dragão</option>
-                    <option value="cachorro">Cachorrinho</option> 
-                    <option value="boi">Boi</option> 
-                    <option value="gato">Gato</option>                     
-                    <option value="add">Outro</option>
-            </select>
+                <input type="text " class="form-control " placeholder="Digite aqui tipo do seu animal " v-model="animal.tipo ">
             </div>
-            <!--<div class="input-group mb-3 ">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text " id="basic-addon1 ">Nova Espécie</span>
-                </div>
-                <input type="text " class="form-control " placeholder="Digite aqui o nome da nova espécie " aria-label="Username " aria-describedby="basic-addon1 " v-model="ipt ">
-                <button type="button " class="btn btn-outline-success ">Salvar</button>
-            </div>-->
-
             <div class="input-group mb-3 ">
                 <div class="iput-group-prepend ">
                     <span class="input-group-text ">Tutor</span>
                 </div>
-                <input type="text " class="form-control " placeholder="Digite aqui o nome do Tutor " v-model="animal.tutor ">
+                <input type="text " class="form-control " placeholder="Digite aqui o nome do Tutor " v-model="animal.tutor  ">
             </div>
             <div class="input-group mb-3 ">
                 <div class="iput-group-prepend ">
@@ -78,42 +71,129 @@
                 </div>
                 <input type="text " class="form-control " placeholder="Digite aqui o nome do Animal " v-model="animal.nome ">
             </div>
-            <button type="button " class="btn btn-outline-secondary " id="butao" v-on:click="cadastro" style="width: 100%;">Cadastrar</button>
+            <div class="list-group list-group-horizontal-sm">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Sexo</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" v-model="animal.sexo">
+                        <option selected> 
+                            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                             ... 
+                            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;</option>
+                        <option value="1">Macho</option>
+                        <option value="2">Fêmea</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">É esterelizado?</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" v-model="animal.esterelizado">
+                    <option value="1">
+                        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                        ...
+                        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;</option>  
+                    <option value="1">Sim</option>
+                    <option value="2">Não</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Tem alergias?</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01" v-model="animal.alergia">
+                      <option selected>
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                          ...
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</option>
+                      <option value="1">Sim</option>
+                      <option value="2">Não</option>
+                    </select>
+            </div>
+
+            <div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Vacinas em dia?</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" v-model="animal.vacina">
+                      <option selected>
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                          ...
+                          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</option>
+                      <option value="1">Sim</option>
+                      <option value="2">Não</option>
+                      <option value="3">Não sabe</option>
+                      <option value="4">Nunca vermifigou</option>
+                      <option value="5">Nunca vacinou</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Tem pulgas?</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" v-model="animal.pulga">
+                      <option selected>...</option>
+                      <option value="1">Sim</option>
+                      <option value="2">Não</option>
+                    </select>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Qual o porte?</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" v-model="animal.porte">
+                      <option selected>...</option>
+                      <option value="1">Pequeno</option>
+                      <option value="2">Médio</option>
+                      <option value="3">Grande</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- botão add e cancelar -->
+
+            <input class="btn btn-outline-success" type="button" v-on:click="addAnimal" value="Cadastrar" />
+            <input class="btn btn-outline-warning" type="button" v-on:click="resetAnimal" value="Cancelar" />
         </fieldset>
+
         <br>
         <hr>
         <br>
-        <h1>Pets</h1>
 
-        <table class="table ">
-            <thead class="thead-dark ">
-                <tr>
-                    <th scope="col ">Nome do Animal</th>
-                    <th scope="col ">Tutor</th>
-                    <th scope="col ">Espécie</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="p in animais ">
-
-                    <td>{{p.nome}}</td>
-
-                    <td>{{p.tutor}}</td>
-
-                    <td>{{p.especie}}</td>
-
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <h1>Pets</h1>
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark ">
+                    <tr>
+                        <th scope="col ">Espécie</th>
+                        <th scope="col ">Tutor</th>
+                        <th scope="col ">Nome do Animal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="a in animais">
+                        <td>{{a.especie}}</td>
+                        <td>{{a.tutor}}</td>
+                        <td>{{a.nome}}</td>
+                        <td>
+                            <button class="btn btn-outline-info" v-on:click='selectAnimal(a)'>Selecionar</button> &nbsp;
+                            <button class="btn btn-outline-danger" v-on:click="delAnimal(a)">Excluir</button>
+                        </td>
+                    </tr>
+            </table>
+        </div>
     </div>
 
-    <!--bootstrap-->
-    <script src="assets/js/bootstrap.bundle.min.js "></script>
-    <!--vue-->
-    <script src="animais.js "></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </tbody>
+
+    <script src="animais.js"></script>
 </body>
 
 </html>
