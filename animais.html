@@ -17,6 +17,9 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dexie/3.0.3/dexie.min.js' integrity='sha512-aEtNzq8X5E0ambgeM68H174SOXaANJ6wDqJ0TuVIx4R2J4fRdUA0nLzx0faA1mmViqb+r0VX7cOXkskxyJENUA==' crossorigin='anonymous'></script>
     <!-- base de dados -->
     <script src="dataBase.js"></script>
+    <!-- JQuery -->
+    <script src="assets/jquery.min.js"></script>
+
     <title>Animais</title>
 </head>
 
@@ -61,9 +64,11 @@
             </div>
             <div class="input-group mb-3 ">
                 <div class="iput-group-prepend ">
-                    <span class="input-group-text ">Tutor</span>
+                    <span class="input-group-text " for="inputGroupSelect01">Tutor</span>
                 </div>
-                <input type="text " class="form-control " placeholder="Digite aqui o nome do Tutor " v-model="animal.tutor  ">
+                <select class="input-group-text" for="inputGroupSelect01" v-model="animal.tutor">
+                     <option  v-for="p in pessoas">{{p.nome}}</option>                    
+                </select>
             </div>
             <div class="input-group mb-3 ">
                 <div class="iput-group-prepend ">
@@ -190,9 +195,7 @@
             </table>
         </div>
     </div>
-
     </tbody>
-
     <script src="animais.js"></script>
 </body>
 

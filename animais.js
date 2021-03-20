@@ -13,6 +13,7 @@ var vapp = new Vue({
             porte: ''
         },
         animais: [],
+        pessoas: []
     },
     mounted: function() {
         this.listarAnimais();
@@ -50,7 +51,11 @@ var vapp = new Vue({
             var _this = this;
             dataBase.tbAnimais.toArray().then(function(retorno) {
                 _this.animais = retorno;
-            })
+            });
+            dataBase.tbPessoas.toArray().then(function(retorno) {
+                _this.pessoas = retorno;
+            });
+            console.log(dataBase.tbAnimais.toArray());
         }
     }
 });
