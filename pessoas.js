@@ -16,14 +16,30 @@ var vapp = new Vue({
     },
     methods: {
         resetPessoa: function() {
-
+            this.pessoa = {
+                nome: null,
+                segundoNome: null,
+                telefone: null,
+                sexo: null,
+                cartao: null,
+                cpf: null
+            }
         },
         addPessoas: function() {
             var _this = this;
-            dataBase.tbPessoas.add(_this.pessoa).then(function(retorno) {
-                alert('pessoa Cadastrada');
-                _this.listarPessoas();
-            });
+            if (_this.pessoa.id == null) {
+                dataBase.tbPessoas.add(_this.pessoa).then(function(retorno) {
+                    alert('pessoa Cadastrada');
+                    _this.listarPessoas();
+                    _this.resetPessoa()
+                });
+            } else {
+                dataBase.tbPessoas.update(_this.pessoa.id, _this.pessoa).then(function(retorno) {
+                    alert('pessoa Atualizada');
+                    _this.listarPessoas();
+                    _this.resetPessoa()
+                });
+            }
         },
         banirPessoa: function(pessoa) {
             var _this = this;

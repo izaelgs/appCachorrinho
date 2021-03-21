@@ -34,11 +34,21 @@ var vapp = new Vue({
         },
         addAnimal: function() {
             var _this = this;
-            dataBase.tbAnimais.add(_this.animal).then(function(retorno) {
-                alert('animal Cadastrada');
-                _this.listarAnimais();
-            });
-            this.resetAnimais
+            if (_this.animal.id == null) {
+                dataBase.tbAnimais.add(_this.animal).then(function(retorno) {
+                    alert('animal Cadastrado');
+                    _this.listarAnimais();
+                    _this.resetAnimal();
+                });
+                this.resetAnimais
+            } else {
+                dataBase.tbAnimais.update(_this.animal.id, _this.animal).then(function(retorno) {
+                    alert('animal Atualizado');
+                    _this.listarAnimais();
+                    _this.resetAnimal();
+                });
+
+            }
         },
         delAnimal: function(animal) {
             var _this = this;
