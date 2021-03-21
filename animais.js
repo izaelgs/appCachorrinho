@@ -47,6 +47,9 @@ var vapp = new Vue({
                 _this.listarAnimais();
             });
         },
+        selectAnimal: function(animal) {
+            this.animal = animal;
+        },
         listarAnimais: function() {
             var _this = this;
             dataBase.tbAnimais.toArray().then(function(retorno) {
